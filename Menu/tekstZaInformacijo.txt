@@ -1,0 +1,55 @@
+﻿Seme je lahko kombinacija števk in znakov.
+###
+več slojev pomeni več podrobnosti
+
+*Koliko slojev zvoka se izračina za vsako točko.
+ Več kot je slojev dlje časa se bo generiral teren.
+###
+Manjše kot je število manjša je pridobljena podrobnost višjih slojev.
+
+*Vztrajnost pove kakšno težo ima naslednji sloj zvoka
+ v primerjavi z njegovim predhodnjim slojem.
+###
+Manjša kot je vrednost bolj bodo razpršene podrobnosti terena.
+
+*Lakunarnost pove za koliko se poveča frekvenca zvoka za
+ vsak sloj v primerjavi z njegovim predhodnjim slojem.
+###
+Večji kot je eksponent višje so gore v primerjavi z dolinami.
+Naredi bolj naraven teren.
+
+*Višina se potencira na ta eksponent.
+###
+Največja višina, ki jo lahko doseže teren
+###
+Manjša kot je vrednost bolj je teren raztegnjen.
+###
+Koliko blokov je vidno v vsako smer.
+
+*Večja kot je razdalja bolj bo zahtevno za risanje in generiranje.
+###
+Navodila:
+[W] = Naprej
+[S] = Dol
+[A] = Levo
+[D] = Desno
+[Space] = Gor
+[Ctrl] = Dol
+[Shift] = Pospešek
+[LMB] = Zoom +
+[RMB] = Zoom -
+[Esc] = Nazaj na menu
+###
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Tu je tekst za "toolTip"-e. Ko prebereš datoteko je zadnji niz v tabeli po "splitu" ta opozorilo.
+Informacije so podane po vrstnem redu:
+1. Seme
+2. Oktavi
+3. Vztrajnost
+4. Lakunarnost
+5. Eksponent
+6. Višina
+7. Razmerje
+8. Vidna razdalja
+9. Navodila za igranje
