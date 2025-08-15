@@ -7,12 +7,12 @@ namespace GeneratorTerena
         private const float MAX_INT_INVERZ = 1f / 4294967296f;
         private int velikostBlok = 64;
         private int seme = 0;
-        private int oktavi = 1;
+        private int oktave = 1;
         private float vztrajnost = 0.5f;
         private float lakunarnost = 2f;
         private float maxVisina = 50f;
         private float eksponent = 1f;
-        private float razmerjeZvoka = 0.5f;
+        private float razmerjeSuma = 0.5f;
         private float maxAmplitudaInverz; // hitrejše računanje
 
         public int Seme
@@ -20,12 +20,12 @@ namespace GeneratorTerena
             get { return seme; }
             set { seme = value; }
         }
-        public int Oktavi
+        public int Oktave
         {
-            get { return oktavi; }
+            get { return oktave; }
             set
             {
-                oktavi = value;
+                oktave = value;
                 maxAmplitudaInverz = IzracunajMaxAmplitudaInverz();
             }
         }
@@ -65,8 +65,8 @@ namespace GeneratorTerena
 
         public float RazmerjeZvoka
         {
-            get { return razmerjeZvoka; }
-            set { razmerjeZvoka = value; }
+            get { return razmerjeSuma; }
+            set { razmerjeSuma = value; }
         }
 
         public Generator()
@@ -124,7 +124,7 @@ namespace GeneratorTerena
             float amplituda = 1f;
             float vsota = 0f;
 
-            for (int i = 0; i < Oktavi; i++)
+            for (int i = 0; i < Oktave; i++)
             {
                 vsota += amplituda;
                 amplituda *= Vztrajnost;
@@ -214,11 +214,11 @@ namespace GeneratorTerena
         /// za vsak (x, z) v bloku vrne y koordinato (višino)
         /// </summary>
         /// <returns></returns>
-        public float[,] VisinskaMapa(Blok blok)
+        public float[,] VisinskaSlika(Blok blok)
         {
 
             float velikostInverz = 1f / (velikostBlok - 1); // (velikostBlok - 1) zato da se bloki zlepijo skupaj
-            float[,] mapa = new float[velikostBlok + 2, velikostBlok + 2];
+            float[,] slika = new float[velikostBlok + 2, velikostBlok + 2];
             // velikostBlok + 2 za računaje normal robnih točk
             // malo škoda ker se bo rob večkrat izračunal ampak bo lepša osvetljava
 
@@ -236,7 +236,7 @@ namespace GeneratorTerena
                     float globalX = blok.BlokX + x * velikostInverz;
                     float globalY = blok.BlokZ + z * velikostInverz;
 
-                    for (int o = 0; o < Oktavi; o++)
+                    for (int o = 0; o < Oktave; o++)
                     {
                         // frekvenca in razmerje se upoštevata tukaj
                         float X = globalX * frekvenca * RazmerjeZvoka;
@@ -244,9 +244,9 @@ namespace GeneratorTerena
 
                         PerlinRezultat rezultat = Perlin(X, Z);
                         gradient += rezultat.Gradient;
-                        koncnaVisina += rezultat.Visina * amplituda / (1f + 0.5f * Vector2.Dot(gradient, gradient)); // 0.5f je lahko parameter
+                        koncnaVisina += rezultat.Visina * amplituda / (1f + 0.25f * Vector2.Dot(gradient, gradient)); // 0.5f je lahko parameter
 
-                        // amplituda in frekvenca za naslednji oktav
+                        // amplituda in frekvenca za naslednjo oktavo
                         amplituda *= vztrajnost;
                         frekvenca *= lakunarnost;
                     }
@@ -257,11 +257,11 @@ namespace GeneratorTerena
                     koncnaVisina = MathF.Pow(koncnaVisina, Eksponent);
                     koncnaVisina *= MaxVisina;
 
-                    mapa[x + 1, z + 1] = koncnaVisina;
+                    slika[x + 1, z + 1] = koncnaVisina;
                 }
             }
 
-            return mapa;
+            return slika;
 
         }
 

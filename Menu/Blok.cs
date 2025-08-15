@@ -8,7 +8,7 @@ namespace GeneratorTerena
     {
         private bool je_v_gpu = false;
         private bool je_zgeneriran_teren = false;
-        private float[,] visinjskaMapa;
+        private float[,] visinjskaSlika;
         // "kazalci"/hadler-ji na spomin v GPU
         private int vao; // vertex array object
         private int vbo; // vertex buffer object
@@ -20,12 +20,12 @@ namespace GeneratorTerena
         public int BlokZ { get; init; }
         public bool JE_V_GPU { get { return je_v_gpu; } }
         public bool JE_ZGENERIRAN_TEREN { get { return je_zgeneriran_teren; } }
-        public float[,] VisinjskaMapa {
+        public float[,] VisinjskaSlika {
             get
             {
                 if (JE_ZGENERIRAN_TEREN)
                 {
-                    return this.visinjskaMapa;
+                    return this.visinjskaSlika;
                 }
                 else
                 {
@@ -55,7 +55,7 @@ namespace GeneratorTerena
         }
 
         /// <summary>
-        /// Ustvari višinjsko mapo za ta blok
+        /// Ustvari višinjsko sliko za ta blok
         /// </summary>
         /// <param name="generator"></param>
         public void GenerirajTeren(Generator generator)
@@ -64,7 +64,7 @@ namespace GeneratorTerena
             {
                 if (je_zgeneriran_teren) return;
 
-                visinjskaMapa = generator.VisinskaMapa(this);
+                visinjskaSlika = generator.VisinskaSlika(this);
                 je_zgeneriran_teren = true;
             }
         }
@@ -79,7 +79,7 @@ namespace GeneratorTerena
             if (je_v_gpu) return; // če je že v GPU
             if (!je_zgeneriran_teren) return; // če podatki še niso zgenerirani
 
-            float[] podatki = PodatkiZaVAO();
+            float[] podatki = PodatkiZaVBO();
             int[] indeksi = Indeksi();
 
             // predstavljaj si kot kazalci na spomin v GPU
@@ -123,13 +123,13 @@ namespace GeneratorTerena
 
         /// <summary>
         /// Za vsako točko sešteje vse normale tistih trikotnikov, ki vsebujejo to točko.
-        /// Višinjska mapa je za dve enoti večja zato, da se tudi pri robnih točkah upoštevajo
+        /// Višinjska slika je za dve enoti večja zato, da se tudi pri robnih točkah upoštevajo
         /// normale trikotnikov, ki niso iz tega bloka.
         /// </summary>
         /// <returns></returns>
         private Vector3[,] SestejNormale()
         {
-            float[,] visine = VisinjskaMapa;
+            float[,] visine = VisinjskaSlika;
             int dolzina = visine.GetLength(0) - 2;
             Vector3[,] normale = new Vector3[(dolzina + 2), (dolzina + 2)];
             // v funkciji "PodatkiZaVAO()" se na koncu robovi ne upoštevajo
@@ -161,7 +161,7 @@ namespace GeneratorTerena
         /// <returns></returns>
         private int[] Indeksi()
         {
-            int dolzina = VisinjskaMapa.GetLength(0) - 2;
+            int dolzina = VisinjskaSlika.GetLength(0) - 2;
             int[] indeksi = new int[6 * (dolzina - 1) * (dolzina - 1)]; // 3 točke na trikotnik in 2 trikotnika na 2x2 kvadratu
 
             // vrstni red indeksov
@@ -197,9 +197,9 @@ namespace GeneratorTerena
         /// 2 za koordinate teksture
         /// </summary>
         /// <returns></returns>
-        private float[] PodatkiZaVAO()
+        private float[] PodatkiZaVBO()
         {
-            float[,] visine = VisinjskaMapa;
+            float[,] visine = VisinjskaSlika;
             int dolzina = visine.GetLength(0) - 2;
             float[] podatki = new float[8 * dolzina * dolzina]; // 8 vrednosti na točko (3 za pizicijo, 3 za normalo, 2 za teksturo)
             Vector3[,] normale = SestejNormale();
@@ -210,8 +210,8 @@ namespace GeneratorTerena
             {
                 for (int x = 0; x < dolzina; x++)
                 {
-                    Vector3 pozicija = new Vector3(x, visine[x + 1, z + 1], z);
-                    Vector3 normala = Vector3.Normalize(normale[x + 1, z + 1]); // ta tabela je za 2 prevelika zato "+ 1"
+                    Vector3 pozicija = new Vector3(x, visine[x + 1, z + 1], z); // ta tabela je za 2 prevelika zato "+ 1" zamik
+                    Vector3 normala = Vector3.Normalize(normale[x + 1, z + 1]); // tu isti razlog
 
                     podatki[i++] = pozicija.X;
                     podatki[i++] = pozicija.Y;
@@ -220,11 +220,9 @@ namespace GeneratorTerena
                     podatki[i++] = normala.Y;
                     podatki[i++] = normala.Z;
 
-                    // koordinate za teksture
-                    float u = x / (float)(dolzina - 1);
-                    float v = z / (float)(dolzina - 1);
-                    podatki[i++] = u;
-                    podatki[i++] = v;
+                    // koordinate za teksture (lahko kar x in Z)
+                    podatki[i++] = x;
+                    podatki[i++] = z;
                 }
             }
             return podatki;

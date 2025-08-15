@@ -3,7 +3,6 @@ using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
-using System.Diagnostics;
 using System.Drawing.Imaging;
 using Keys = OpenTK.Windowing.GraphicsLibraryFramework.Keys;
 
@@ -127,7 +126,6 @@ namespace GeneratorTerena
             GL.UniformMatrix4(GL.GetUniformLocation(shaderProgrami["teren"], "uProjekcija"), false, ref projekcija);
             GL.Uniform3(GL.GetUniformLocation(shaderProgrami["teren"], "uSmerSvetlobe"), new Vector3(0f, 1f, 0f).Normalized());
             GL.Uniform2(GL.GetUniformLocation(shaderProgrami["teren"], "uIzbiraBarve"), delitevBarve * generator.MaxVisina);
-            //GL.Uniform3(GL.GetUniformLocation(shaderProgrami["teren"], "viewPos"), kamera.Pozicija);
 
             // teksture
             PripraviTekstureZaRisanje();

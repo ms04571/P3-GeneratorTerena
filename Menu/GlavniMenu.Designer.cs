@@ -34,7 +34,7 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            drsnikOktavi = new TrackBar();
+            drsnikOktave = new TrackBar();
             drsnikVztrajnost = new TrackBar();
             drsnikLakunarnost = new TrackBar();
             drsnikEksponent = new TrackBar();
@@ -44,7 +44,7 @@
             drsnikVisina = new TrackBar();
             gumbZazeni = new Button();
             label7 = new Label();
-            drsnikScale = new TrackBar();
+            drsnikRazmerje = new TrackBar();
             izborRezolucija = new ComboBox();
             casZaPosodobitiSliko = new System.Windows.Forms.Timer(components);
             gumbKonzola = new CheckBox();
@@ -55,30 +55,30 @@
             infoLakunarnost = new Label();
             infoVztrajnost = new Label();
             infoSeme = new Label();
-            infoOktavi = new Label();
+            infoOktave = new Label();
             tekstRazmerje = new Label();
             tekstVisina = new Label();
             tekstEksponent = new Label();
             tekstLakunarnost = new Label();
             tekstVztrajnost = new Label();
-            tekstOktavi = new Label();
+            tekstOktave = new Label();
             groupBox2 = new GroupBox();
             vidnaRazdalja = new NumericUpDown();
             label10 = new Label();
             label9 = new Label();
             label8 = new Label();
+            infoVidnaRazdalja = new Label();
             drsnikHitrostMiske = new TrackBar();
             groupBox3 = new GroupBox();
             infoZazeni = new Label();
             dodatneInformacije = new ToolTip(components);
-            infoVidnaRazdalja = new Label();
             ((System.ComponentModel.ISupportInitialize)mapa).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)drsnikOktavi).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)drsnikOktave).BeginInit();
             ((System.ComponentModel.ISupportInitialize)drsnikVztrajnost).BeginInit();
             ((System.ComponentModel.ISupportInitialize)drsnikLakunarnost).BeginInit();
             ((System.ComponentModel.ISupportInitialize)drsnikEksponent).BeginInit();
             ((System.ComponentModel.ISupportInitialize)drsnikVisina).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)drsnikScale).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)drsnikRazmerje).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)vidnaRazdalja).BeginInit();
@@ -130,16 +130,16 @@
             label4.TabIndex = 1;
             label4.Text = "Eksponent";
             // 
-            // drsnikOktavi
+            // drsnikOktave
             // 
-            drsnikOktavi.Location = new Point(26, 103);
-            drsnikOktavi.Maximum = 15;
-            drsnikOktavi.Minimum = 1;
-            drsnikOktavi.Name = "drsnikOktavi";
-            drsnikOktavi.Size = new Size(260, 45);
-            drsnikOktavi.TabIndex = 2;
-            drsnikOktavi.Value = 6;
-            drsnikOktavi.Scroll += drsnikOktavi_Scroll;
+            drsnikOktave.Location = new Point(26, 103);
+            drsnikOktave.Maximum = 15;
+            drsnikOktave.Minimum = 1;
+            drsnikOktave.Name = "drsnikOktave";
+            drsnikOktave.Size = new Size(260, 45);
+            drsnikOktave.TabIndex = 2;
+            drsnikOktave.Value = 6;
+            drsnikOktave.Scroll += drsnikOktave_Scroll;
             // 
             // drsnikVztrajnost
             // 
@@ -230,16 +230,16 @@
             label7.TabIndex = 1;
             label7.Text = "Razmerje";
             // 
-            // drsnikScale
+            // drsnikRazmerje
             // 
-            drsnikScale.Location = new Point(26, 437);
-            drsnikScale.Maximum = 1000;
-            drsnikScale.Minimum = 100;
-            drsnikScale.Name = "drsnikScale";
-            drsnikScale.Size = new Size(260, 45);
-            drsnikScale.TabIndex = 2;
-            drsnikScale.Value = 500;
-            drsnikScale.Scroll += drsnikScale_Scroll;
+            drsnikRazmerje.Location = new Point(26, 437);
+            drsnikRazmerje.Maximum = 1000;
+            drsnikRazmerje.Minimum = 100;
+            drsnikRazmerje.Name = "drsnikRazmerje";
+            drsnikRazmerje.Size = new Size(260, 45);
+            drsnikRazmerje.TabIndex = 2;
+            drsnikRazmerje.Value = 500;
+            drsnikRazmerje.Scroll += drsnikScale_Scroll;
             // 
             // izborRezolucija
             // 
@@ -278,22 +278,22 @@
             groupBox1.Controls.Add(infoLakunarnost);
             groupBox1.Controls.Add(infoVztrajnost);
             groupBox1.Controls.Add(infoSeme);
-            groupBox1.Controls.Add(infoOktavi);
+            groupBox1.Controls.Add(infoOktave);
             groupBox1.Controls.Add(tekstRazmerje);
             groupBox1.Controls.Add(tekstVisina);
             groupBox1.Controls.Add(tekstEksponent);
             groupBox1.Controls.Add(tekstLakunarnost);
             groupBox1.Controls.Add(tekstVztrajnost);
-            groupBox1.Controls.Add(tekstOktavi);
+            groupBox1.Controls.Add(tekstOktave);
             groupBox1.Controls.Add(boxSeme);
-            groupBox1.Controls.Add(drsnikScale);
+            groupBox1.Controls.Add(drsnikRazmerje);
             groupBox1.Controls.Add(drsnikVisina);
             groupBox1.Controls.Add(drsnikEksponent);
             groupBox1.Controls.Add(drsnikLakunarnost);
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(drsnikVztrajnost);
             groupBox1.Controls.Add(label6);
-            groupBox1.Controls.Add(drsnikOktavi);
+            groupBox1.Controls.Add(drsnikOktave);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
@@ -384,18 +384,18 @@
             infoSeme.MouseLeave += MiskaInformacijaDol;
             infoSeme.MouseHover += MiskaInformacijaGor;
             // 
-            // infoOktavi
+            // infoOktave
             // 
-            infoOktavi.AutoSize = true;
-            infoOktavi.BackColor = Color.LightBlue;
-            infoOktavi.Font = new Font("Segoe UI", 6.75F);
-            infoOktavi.Location = new Point(274, 88);
-            infoOktavi.Name = "infoOktavi";
-            infoOktavi.Size = new Size(9, 12);
-            infoOktavi.TabIndex = 6;
-            infoOktavi.Text = "?";
-            infoOktavi.MouseLeave += MiskaInformacijaDol;
-            infoOktavi.MouseHover += MiskaInformacijaGor;
+            infoOktave.AutoSize = true;
+            infoOktave.BackColor = Color.LightBlue;
+            infoOktave.Font = new Font("Segoe UI", 6.75F);
+            infoOktave.Location = new Point(274, 88);
+            infoOktave.Name = "infoOktave";
+            infoOktave.Size = new Size(9, 12);
+            infoOktave.TabIndex = 6;
+            infoOktave.Text = "?";
+            infoOktave.MouseLeave += MiskaInformacijaDol;
+            infoOktave.MouseHover += MiskaInformacijaGor;
             // 
             // tekstRazmerje
             // 
@@ -442,14 +442,14 @@
             tekstVztrajnost.TabIndex = 5;
             tekstVztrajnost.Text = "0";
             // 
-            // tekstOktavi
+            // tekstOktave
             // 
-            tekstOktavi.AutoSize = true;
-            tekstOktavi.Location = new Point(292, 103);
-            tekstOktavi.Name = "tekstOktavi";
-            tekstOktavi.Size = new Size(13, 15);
-            tekstOktavi.TabIndex = 5;
-            tekstOktavi.Text = "0";
+            tekstOktave.AutoSize = true;
+            tekstOktave.Location = new Point(292, 103);
+            tekstOktave.Name = "tekstOktave";
+            tekstOktave.Size = new Size(13, 15);
+            tekstOktave.TabIndex = 5;
+            tekstOktave.Text = "0";
             // 
             // groupBox2
             // 
@@ -505,6 +505,19 @@
             label8.TabIndex = 9;
             label8.Text = "Hitrost miške";
             // 
+            // infoVidnaRazdalja
+            // 
+            infoVidnaRazdalja.AutoSize = true;
+            infoVidnaRazdalja.BackColor = Color.LightBlue;
+            infoVidnaRazdalja.Font = new Font("Segoe UI", 6.75F);
+            infoVidnaRazdalja.Location = new Point(335, 91);
+            infoVidnaRazdalja.Name = "infoVidnaRazdalja";
+            infoVidnaRazdalja.Size = new Size(9, 12);
+            infoVidnaRazdalja.TabIndex = 6;
+            infoVidnaRazdalja.Text = "?";
+            infoVidnaRazdalja.MouseLeave += MiskaInformacijaDol;
+            infoVidnaRazdalja.MouseHover += MiskaInformacijaGor;
+            // 
             // drsnikHitrostMiske
             // 
             drsnikHitrostMiske.Location = new Point(11, 96);
@@ -541,19 +554,6 @@
             infoZazeni.MouseLeave += MiskaInformacijaDol;
             infoZazeni.MouseHover += MiskaInformacijaGor;
             // 
-            // infoVidnaRazdalja
-            // 
-            infoVidnaRazdalja.AutoSize = true;
-            infoVidnaRazdalja.BackColor = Color.LightBlue;
-            infoVidnaRazdalja.Font = new Font("Segoe UI", 6.75F);
-            infoVidnaRazdalja.Location = new Point(335, 91);
-            infoVidnaRazdalja.Name = "infoVidnaRazdalja";
-            infoVidnaRazdalja.Size = new Size(9, 12);
-            infoVidnaRazdalja.TabIndex = 6;
-            infoVidnaRazdalja.Text = "?";
-            infoVidnaRazdalja.MouseLeave += MiskaInformacijaDol;
-            infoVidnaRazdalja.MouseHover += MiskaInformacijaGor;
-            // 
             // GlavniMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -566,12 +566,12 @@
             Name = "GlavniMenu";
             Text = "Menu";
             ((System.ComponentModel.ISupportInitialize)mapa).EndInit();
-            ((System.ComponentModel.ISupportInitialize)drsnikOktavi).EndInit();
+            ((System.ComponentModel.ISupportInitialize)drsnikOktave).EndInit();
             ((System.ComponentModel.ISupportInitialize)drsnikVztrajnost).EndInit();
             ((System.ComponentModel.ISupportInitialize)drsnikLakunarnost).EndInit();
             ((System.ComponentModel.ISupportInitialize)drsnikEksponent).EndInit();
             ((System.ComponentModel.ISupportInitialize)drsnikVisina).EndInit();
-            ((System.ComponentModel.ISupportInitialize)drsnikScale).EndInit();
+            ((System.ComponentModel.ISupportInitialize)drsnikRazmerje).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
@@ -590,7 +590,7 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private TrackBar drsnikOktavi;
+        private TrackBar drsnikOktave;
         private TrackBar drsnikVztrajnost;
         private TrackBar drsnikLakunarnost;
         private TrackBar drsnikEksponent;
@@ -600,7 +600,7 @@
         private TrackBar drsnikVisina;
         private Button gumbZazeni;
         private Label label7;
-        private TrackBar drsnikScale;
+        private TrackBar drsnikRazmerje;
         private ComboBox izborRezolucija;
         private System.Windows.Forms.Timer casZaPosodobitiSliko;
         private CheckBox gumbKonzola;
@@ -615,14 +615,14 @@
         private Label tekstEksponent;
         private Label tekstLakunarnost;
         private Label tekstVztrajnost;
-        private Label tekstOktavi;
+        private Label tekstOktave;
         private ToolTip dodatneInformacije;
         private Label infoRazmerje;
         private Label infoVisina;
         private Label infoEksponent;
         private Label infoLakunarnost;
         private Label infoVztrajnost;
-        private Label infoOktavi;
+        private Label infoOktave;
         private Label infoSeme;
         private NumericUpDown vidnaRazdalja;
         private Label label10;

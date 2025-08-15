@@ -38,11 +38,11 @@ namespace Menu
         private void NastaviZacetek()
         {
             boxSeme_TextChanged(boxSeme, EventArgs.Empty);
-            drsnikOktavi_Scroll(drsnikOktavi, EventArgs.Empty);
+            drsnikOktave_Scroll(drsnikOktave, EventArgs.Empty);
             drsnikVztrajnost_Scroll(drsnikVztrajnost, EventArgs.Empty);
             drsnikLakunarnost_Scroll(drsnikLakunarnost, EventArgs.Empty);
             drsnikEksponent_Scroll(drsnikEksponent, EventArgs.Empty);
-            drsnikScale_Scroll(drsnikScale, EventArgs.Empty);
+            drsnikScale_Scroll(drsnikRazmerje, EventArgs.Empty);
             drsnikVisina_Scroll(drsnikVisina, EventArgs.Empty);
             drsnikHitrostMiske_Scroll(drsnikHitrostMiske, EventArgs.Empty);
         }
@@ -66,12 +66,12 @@ namespace Menu
             PonastaviBloke();
         }
         // vsi drsniki (dvomim, da lahko grejo vsi v eno funkcijo)
-        private void drsnikOktavi_Scroll(object sender, EventArgs e)
+        private void drsnikOktave_Scroll(object sender, EventArgs e)
         {
             TrackBar drsnik = (TrackBar)sender;
             int vrednost = drsnik.Value;
-            generator.Oktavi = vrednost;
-            tekstOktavi.Text = vrednost.ToString();
+            generator.Oktave = vrednost;
+            tekstOktave.Text = vrednost.ToString();
             PonastaviBloke();
         }
         private void drsnikVztrajnost_Scroll(object sender, EventArgs e)
@@ -161,15 +161,15 @@ namespace Menu
         private void PosodobiBlokNaSliki(Blok blok)
         {
             int velikostBloka = generator.VelikostBlok;
-            float[,] visinskaMapa = blok.VisinjskaMapa;
+            float[,] visinskaSlika = blok.VisinjskaSlika;
 
             // koordinati so zamaknjeni ker so robovi odveè
             for (int x = 1; x < velikostBloka + 1; x++)
-            {
+            {           
                 for (int y = 1; y < velikostBloka + 1; y++)
                 {
-                    // barva glede na višino (mogoèe dodaj še kamen kjer je oster klanec)
-                    float visina = visinskaMapa[x, y] / generator.MaxVisina;
+                    // barva glede na višino 
+                    float visina = visinskaSlika[x, y] / generator.MaxVisina;
                     Color barva;
                     if (visina < uporabljenaDelitevBarve.X * 0.5f) barva = Color.MediumBlue;
                     else if (visina < uporabljenaDelitevBarve.X - (3f / generator.MaxVisina)) barva = Color.LightBlue;
@@ -178,9 +178,9 @@ namespace Menu
                     else barva = Color.White;
 
                     // senèitev (simulira sonce zgoraj levo)
-                    float razlikaVisineDiagonala = visinskaMapa[x + 1, y + 1] - visinskaMapa[x, y];
-                    float razlikaVisineDesno = visinskaMapa[x + 1, y] - visinskaMapa[x, y];
-                    float razlikaVisineGor = visinskaMapa[x, y + 1] - visinskaMapa[x, y];
+                    float razlikaVisineDiagonala = visinskaSlika[x + 1, y + 1] - visinskaSlika[x, y];
+                    float razlikaVisineDesno = visinskaSlika[x + 1, y] - visinskaSlika[x, y];
+                    float razlikaVisineGor = visinskaSlika[x, y + 1] - visinskaSlika[x, y];
                     float vsotaRazlike = razlikaVisineDiagonala + razlikaVisineDesno + razlikaVisineGor;
                     vsotaRazlike = Math.Clamp(vsotaRazlike, -3, 3) / 3; // recimo neka normalizirana razlika višine
 
@@ -260,7 +260,7 @@ namespace Menu
             Control[] tabelaInformacijskihIkon =
             {
                 infoSeme,
-                infoOktavi,
+                infoOktave,
                 infoVztrajnost,
                 infoLakunarnost,
                 infoEksponent,
