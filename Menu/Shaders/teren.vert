@@ -1,9 +1,8 @@
-﻿#version 330 core
+﻿#version 400 core
 
 // vhod
 layout(location = 0) in vec3 aPozicija;
 layout(location = 1) in vec3 aNormala;
-layout(location = 2) in vec2 aKoordinataTeksture;
 
 // izhod
 out vec3 vNormala;
@@ -25,7 +24,7 @@ void main()
     vNormala = aNormala;
     vec4 pravaPozicija = uModel * vec4(aPozicija, 1.0);
     vPozicija = pravaPozicija.xyz;
-    vKoordinataTeksture = aKoordinataTeksture * 0.05;
+    vKoordinataTeksture = pravaPozicija.xz * 0.05;
 
     float visina = vPozicija.y;
     float naklon = abs(dot(aNormala, vec3(0.0, 1.0, 0.0)));

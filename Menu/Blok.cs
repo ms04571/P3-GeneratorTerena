@@ -89,7 +89,7 @@ namespace GeneratorTerena
 
             GL.BindVertexArray(vao);
 
-            int zamik = 8 * sizeof(float); // 8 float-ov za eno točko
+            int zamik = 6 * sizeof(float); // 6 float-ov za eno točko
 
             // Vertex buffer object
             GL.BindBuffer(BufferTarget.ArrayBuffer, vbo);
@@ -107,9 +107,6 @@ namespace GeneratorTerena
             GL.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, zamik, 3 * sizeof(float));
             GL.EnableVertexAttribArray(1);
 
-            // koordinati teksture
-            GL.VertexAttribPointer(2, 2, VertexAttribPointerType.Float, false, zamik, 6 * sizeof(float));
-            GL.EnableVertexAttribArray(2);
 
             GL.BindVertexArray(0);
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
@@ -201,7 +198,7 @@ namespace GeneratorTerena
         {
             float[,] visine = VisinjskaSlika;
             int dolzina = visine.GetLength(0) - 2;
-            float[] podatki = new float[8 * dolzina * dolzina]; // 8 vrednosti na točko (3 za pizicijo, 3 za normalo, 2 za teksturo)
+            float[] podatki = new float[6 * dolzina * dolzina]; // 8 vrednosti na točko (3 za pizicijo, 3 za normalo)
             Vector3[,] normale = SestejNormale();
 
             // vstavljanje točk, normal in koordinat v VAO
@@ -219,10 +216,6 @@ namespace GeneratorTerena
                     podatki[i++] = normala.X;
                     podatki[i++] = normala.Y;
                     podatki[i++] = normala.Z;
-
-                    // koordinate za teksture (lahko kar x in Z)
-                    podatki[i++] = x;
-                    podatki[i++] = z;
                 }
             }
             return podatki;
