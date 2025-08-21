@@ -246,7 +246,7 @@ namespace GeneratorTerena
                         gradient += rezultat.Gradient;
                         koncnaVisina += rezultat.Visina * amplituda / (1f + 0.25f * Vector2.Dot(gradient, gradient)); // 0.5f je lahko parameter
 
-                        // amplituda in frekvenca za naslednjo oktavo
+                        // amplituda in frekvenca za naslednji oktav
                         amplituda *= vztrajnost;
                         frekvenca *= lakunarnost;
                     }

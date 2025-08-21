@@ -102,7 +102,7 @@ namespace Menu
         private void drsnikVisina_Scroll(object sender, EventArgs e)
         {
             TrackBar drsnik = (TrackBar)sender;
-            float vrednost = drsnik.Value * 0.001f;
+            float vrednost = (float)drsnik.Value;
             generator.MaxVisina = vrednost;
             tekstVisina.Text = $"{vrednost:F3}";
             PonastaviBloke();
@@ -255,6 +255,10 @@ namespace Menu
         }
 
 
+        /// <summary>
+        /// Prebere datoteko "tekstZaInformacijo.txt" in nastavi tooltip-e na ikone z "?"
+        /// za razne parametre in nastavitve v menuju
+        /// </summary>
         private void NastaviDodatneInformacije()
         {
             Control[] tabelaInformacijskihIkon =
@@ -284,12 +288,22 @@ namespace Menu
             }
         }
 
+        /// <summary>
+        /// Spremeni barvo ozadja gradnika na temnejšo modro
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MiskaInformacijaGor(object sender, EventArgs e)
         {
             Label tekst = (Label)sender;
             tekst.BackColor = Color.DeepSkyBlue;
         }
 
+        /// <summary>
+        /// Spremeni barvo ozadja gradnika na svetlejšo modro.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MiskaInformacijaDol(object sender, EventArgs e)
         {
             Label tekst = (Label)sender;

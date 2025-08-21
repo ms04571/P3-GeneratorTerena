@@ -72,6 +72,7 @@
             groupBox3 = new GroupBox();
             infoZazeni = new Label();
             dodatneInformacije = new ToolTip(components);
+            toolStrip1 = new ToolStrip();
             ((System.ComponentModel.ISupportInitialize)mapa).BeginInit();
             ((System.ComponentModel.ISupportInitialize)drsnikOktave).BeginInit();
             ((System.ComponentModel.ISupportInitialize)drsnikVztrajnost).BeginInit();
@@ -144,8 +145,8 @@
             // drsnikVztrajnost
             // 
             drsnikVztrajnost.Location = new Point(26, 168);
-            drsnikVztrajnost.Maximum = 750;
-            drsnikVztrajnost.Minimum = 250;
+            drsnikVztrajnost.Maximum = 650;
+            drsnikVztrajnost.Minimum = 350;
             drsnikVztrajnost.Name = "drsnikVztrajnost";
             drsnikVztrajnost.Size = new Size(260, 45);
             drsnikVztrajnost.TabIndex = 2;
@@ -155,8 +156,8 @@
             // drsnikLakunarnost
             // 
             drsnikLakunarnost.Location = new Point(26, 230);
-            drsnikLakunarnost.Maximum = 2500;
-            drsnikLakunarnost.Minimum = 1500;
+            drsnikLakunarnost.Maximum = 2200;
+            drsnikLakunarnost.Minimum = 1800;
             drsnikLakunarnost.Name = "drsnikLakunarnost";
             drsnikLakunarnost.Size = new Size(260, 45);
             drsnikLakunarnost.TabIndex = 2;
@@ -203,12 +204,12 @@
             // drsnikVisina
             // 
             drsnikVisina.Location = new Point(26, 369);
-            drsnikVisina.Maximum = 1000000;
-            drsnikVisina.Minimum = 10000;
+            drsnikVisina.Maximum = 1000;
+            drsnikVisina.Minimum = 10;
             drsnikVisina.Name = "drsnikVisina";
             drsnikVisina.Size = new Size(260, 45);
             drsnikVisina.TabIndex = 2;
-            drsnikVisina.Value = 300000;
+            drsnikVisina.Value = 300;
             drsnikVisina.Scroll += drsnikVisina_Scroll;
             // 
             // gumbZazeni
@@ -261,8 +262,6 @@
             // gumbKonzola
             // 
             gumbKonzola.AutoSize = true;
-            gumbKonzola.Checked = true;
-            gumbKonzola.CheckState = CheckState.Checked;
             gumbKonzola.Location = new Point(21, 39);
             gumbKonzola.Name = "gumbKonzola";
             gumbKonzola.Size = new Size(105, 19);
@@ -272,6 +271,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(toolStrip1);
             groupBox1.Controls.Add(infoRazmerje);
             groupBox1.Controls.Add(infoVisina);
             groupBox1.Controls.Add(infoEksponent);
@@ -554,6 +554,14 @@
             infoZazeni.MouseLeave += MiskaInformacijaDol;
             infoZazeni.MouseHover += MiskaInformacijaGor;
             // 
+            // toolStrip1
+            // 
+            toolStrip1.Location = new Point(3, 19);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(347, 25);
+            toolStrip1.TabIndex = 7;
+            toolStrip1.Text = "toolStrip1";
+            // 
             // GlavniMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -628,5 +636,6 @@
         private Label label10;
         private Label infoZazeni;
         private Label infoVidnaRazdalja;
+        private ToolStrip toolStrip1;
     }
 }

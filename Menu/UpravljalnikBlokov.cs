@@ -149,7 +149,10 @@ namespace GeneratorTerena
                         // če bo prejsnji blok izven tabele
                         bool jeZunaj = (stariX < 0 || stariX >= velikostTabele ||
                                         stariZ < 0 || stariZ >= velikostTabele);
-                        if (jeZunaj) { bloki[x, z].SprazniPomnilnik(); }
+                        if (jeZunaj) 
+                        { 
+                            bloki[x, z].SprazniPomnilnik();
+                        }
                     }
                     else
                     {

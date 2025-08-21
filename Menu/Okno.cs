@@ -90,7 +90,7 @@ namespace GeneratorTerena
             if (KeyboardState.IsKeyDown(Keys.Space)) { kamera.Pozicija += kamera.Gor * pravaHitrost; }
             if (KeyboardState.IsKeyDown(Keys.LeftControl)) { kamera.Pozicija -= kamera.Gor * pravaHitrost; }
 
-            // zoom
+            // zoom:  interval za fov je (Pi/2, Pi/8)
             if (MouseState.IsButtonDown(MouseButton.Left)) { kamera.Fov = Math.Max(kamera.Fov - 0.01f, (float)(Math.PI * 0.125f)); }
             if (MouseState.IsButtonDown(MouseButton.Right)) { kamera.Fov = Math.Min(kamera.Fov + 0.01f, (float)(Math.PI * 0.5f)); }
 
@@ -335,6 +335,7 @@ namespace GeneratorTerena
 
         /// <summary>
         /// Priprava tekstur pred vsakim klicom za risanje
+        /// lahko bi bila zanka
         /// </summary>
         private void PripraviTekstureZaRisanje()
         {

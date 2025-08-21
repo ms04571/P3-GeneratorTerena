@@ -2,17 +2,17 @@
 ###
 več slojev pomeni več podrobnosti
 
-*Koliko slojev zvoka se izračina za vsako točko.
+*Koliko slojev šuma se izračina za vsako točko.
  Več kot je slojev dlje časa se bo generiral teren.
 ###
-Manjše kot je število manjša je pridobljena podrobnost višjih slojev.
+Manjše kot je vrednost manjša je pridobljena podrobnost višjih slojev.
 
-*Vztrajnost pove kakšno težo ima naslednji sloj zvoka
+*Vztrajnost pove kakšno težo ima naslednji sloj šuma
  v primerjavi z njegovim predhodnjim slojem.
 ###
 Manjša kot je vrednost bolj bodo razpršene podrobnosti terena.
 
-*Lakunarnost pove za koliko se poveča frekvenca zvoka za
+*Lakunarnost pove za koliko se poveča frekvenca šuma za
  vsak sloj v primerjavi z njegovim predhodnjim slojem.
 ###
 Večji kot je eksponent višje so gore v primerjavi z dolinami.
@@ -38,7 +38,7 @@ Navodila:
 [Shift] = Pospešek
 [LMB] = Zoom +
 [RMB] = Zoom -
-[Esc] = Nazaj na menu
+[Esc] = Zapri okno in pojdi nazaj na menu
 ###
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -52,4 +52,4 @@ Informacije so podane po vrstnem redu:
 6. Višina
 7. Razmerje
 8. Vidna razdalja
-9. Navodila za igranje
+9. Navodila za uporabo

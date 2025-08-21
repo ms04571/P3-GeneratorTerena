@@ -1,4 +1,5 @@
 ﻿#version 400 core
+
 out vec4 BarvaPiksla;
 
 void main()
